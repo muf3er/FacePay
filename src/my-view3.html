@@ -1,0 +1,46 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/granite-qrcode-scanner/granite-qrcode-scanner.html">
+<link href="../bower_components/paper-button/paper-button.html" rel="import">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<dom-module id="my-view3">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <div class="card" align="center">
+      <div class="circle" on-click="switch">QR</div>
+      <h1>Scan your checkout QR Code</h1>
+      <div><granite-qrcode-scanner id="qr" data="{{data}}" active continuous></granite-qrcode-scanner></div>
+      <p>Total Checkout: MYR [[data]]</p>
+      <div><paper-button raised class="green">Continue to FaceAuth</paper-button></div>
+    </div>
+  </template>
+
+  <script>
+    class MyView3 extends Polymer.Element {
+      static get is() { return 'my-view3'; }
+      switch(){
+        window.location.pathname = '/view4';
+      }
+    }
+
+    window.customElements.define(MyView3.is, MyView3);
+  </script>
+</dom-module>
